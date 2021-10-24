@@ -25,15 +25,23 @@ class ForecastViewController: UIViewController {
         return stackView
     }()
     
-    var colors: [UIColor] = [.red, .yellow, .blue, .green, .systemPink, .orange]
+    let forecastSpinner: UIActivityIndicatorView = {
+        let spiner = UIActivityIndicatorView()
+        spiner.color = .black
+        spiner.style = .large
+        return spiner
+    }()
+    
+    var colors: [UIColor] = [#colorLiteral(red: 0.9098039269, green: 0.5254884555, blue: 0.5817584947, alpha: 1), #colorLiteral(red: 1, green: 0.9975345455, blue: 0.6872003919, alpha: 1), #colorLiteral(red: 0.5961294384, green: 0.7331562011, blue: 1, alpha: 1), #colorLiteral(red: 0.6930560762, green: 1, blue: 0.6908935261, alpha: 1), #colorLiteral(red: 0.9824787424, green: 0.7485847892, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.8281603211, blue: 0.7240381341, alpha: 1)]
+  //  var colors: [UIColor] = [.red, .yellow, .blue, .green, .systemPink, .orange]
     
     var presenter: ForecastViewPresenterProtocol!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         forecastTableView.dataSource = self
         forecastTableView.delegate = self
-        //success()
+        forecastSpinner.startAnimating()
+        forecastSpinner.isHidden = false
         setupViews()
     }
     
@@ -42,16 +50,28 @@ class ForecastViewController: UIViewController {
         success()
     }
     
+    override func viewDidLayoutSubviews() {
+           super.viewDidLayoutSubviews()
+           if #available(iOS 12.0, *) {
+               if traitCollection.userInterfaceStyle == .dark {
+                   forecastSpinner.color = .white
+               } else {
+                   forecastSpinner.color = .black
+               }
+           }
+       }
+    
     private func setupViews() {
         view.addSubview(forecastTableView)
         view.addSubview(gradientStackView)
+        forecastTableView.addSubview(forecastSpinner)
         for color in colors {
             let view = UIView()
             view.backgroundColor = color
+            view.alpha = 0.8
             gradientStackView.addArrangedSubview(view)
         }
         setupConstraint()
-        
     }
     
     private func setupConstraint() {
@@ -64,28 +84,43 @@ class ForecastViewController: UIViewController {
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(5)
         }
+        
+        forecastSpinner.snp.makeConstraints { (make) in
+            make.centerX.centerY.equalToSuperview()
+        }
     }
 }
 
 extension ForecastViewController: ForecastViewProtocol {
     func success() {
-        title = "\(presenter.forecastWeather?.city.name ?? "nil")"
-        forecastTableView.reloadData()
-    }
+        //DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.title = "\(self.presenter.forecastWeather?.city.name ?? "Forecast")"
+            self.forecastTableView.reloadData()
+        }
+   // }
         
     func failure(error: Error) {
         print(error.localizedDescription)
     }
 }
-
-extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
+// MARK: - TableViewDataSource
+extension ForecastViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        let forecast = presenter.forecastWeather?.list
+//        let sectionArr = [forecast?[0], forecast?[1], forecast?[2], forecast?[3], forecast?[4], forecast?[5]]
+//        print(forecast?[7])
+//        switch section {
+//        case forecast?[0]:
+//            return
+//        default:
+//            <#code#>
+//        }
         return presenter.forecastWeather?.list.count ?? 0
     }
     
 //    func numberOfSections(in tableView: UITableView) -> Int {
-
+//        return 6
 //    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -96,35 +131,45 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
+        if let date = dateFormatterGet.date(from: forecast?.dateTxt ?? "0") {
+            cell?.timeLabel.text  = dateFormatter.string(from: date)
+        }
+        
+        let dateFormatterGet1 = DateFormatter()
+        dateFormatterGet1.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
-//        print(presenter.forecastWeather?.list.count)
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "EEEE"
+        guard let date = dateFormatterGet1.date(from: forecast?.dateTxt ?? "0") else { return UITableViewCell ()}
+        
+        cell?.weakDay.text = dateFormatter1.string(from: date)
         cell?.temperatureLabel.text = "\(Int(forecast?.main.temp ?? 0) )" + "°"
         cell?.forecastImage.sd_setImage(with: forecast?.weather[0].forecastWeatherIconURL, completed: nil)
-        
-        if let date = dateFormatterGet.date(from: forecast?.dateTxt ?? "0") {
-           cell?.timeLabel.text  = dateFormatter.string(from: date)
-        }
         cell?.weatherLabel.text = "\(forecast?.weather[0].description ?? "No info")"
-        //cell?.timeLabel.text = "\(dateFormatter.date(from: forecast?.dateTxt ?? "o") ?? Date())"
-      //  cell?.textLabel?.text = "\(presenter.forecastWeather?.list[0].main.temp ?? 0)"
+        self.forecastSpinner.stopAnimating()
+        self.forecastSpinner.isHidden = true
+
         return cell ?? UITableViewCell()
     }
+}
 
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.reuseIdentifier) as? ForecastTableViewCell
 //
 //    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        guard let date = dateFormatterGet.date(from: presenter.forecastWeather?.list[0].dateTxt ?? "0") else { return ""}
+    // MARK: - TableViewDelegate
+    extension ForecastViewController: UITableViewDelegate {
         
-           return dateFormatter.string(from: date)
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        let dateFormatterGet = DateFormatter()
+//        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "EEEE"
+//        guard let date = dateFormatterGet.date(from: presenter.forecastWeather?.list[0].dateTxt ?? "0") else { return ""}
+//
+//           return dateFormatter.string(from: date)
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100

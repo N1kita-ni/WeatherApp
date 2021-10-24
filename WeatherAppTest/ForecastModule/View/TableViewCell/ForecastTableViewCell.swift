@@ -18,7 +18,6 @@ class ForecastTableViewCell: UITableViewCell {
     let temperatureLabel: UILabel = {
         let tempLabel = UILabel()
         tempLabel.font = .systemFont(ofSize: 30, weight: .bold)
-        tempLabel.text = " lkwefj"
         tempLabel.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         tempLabel.textAlignment = .center
         return tempLabel
@@ -34,6 +33,13 @@ class ForecastTableViewCell: UITableViewCell {
     let weatherLabel: UILabel = {
         let state = UILabel()
         state.font = .systemFont(ofSize: 15)
+        state.textAlignment = .center
+        return state
+    }()
+    
+    let weakDay: UILabel = {
+        let state = UILabel()
+        state.font = .systemFont(ofSize: 15, weight: .bold)
         state.textAlignment = .center
         return state
     }()
@@ -58,6 +64,7 @@ class ForecastTableViewCell: UITableViewCell {
         addSubview(forecastImage)
         addSubview(timeLabel)
         addSubview(weatherLabel)
+        addSubview(weakDay)
         setupConstr()
     }
     
@@ -84,6 +91,10 @@ class ForecastTableViewCell: UITableViewCell {
         weatherLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(forecastImage.snp.trailing).offset(10)
             make.top.equalTo(timeLabel.snp.bottom).offset(10)
+        }
+        weakDay.snp.makeConstraints { (make) in
+            make.leading.equalTo(forecastImage.snp.trailing).offset(10)
+            make.top.equalTo(weatherLabel.snp.bottom).offset(10)
         }
     }
     

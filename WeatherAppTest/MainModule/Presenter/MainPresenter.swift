@@ -17,7 +17,6 @@ protocol MainViewProtocol: class {
 protocol MainViewPresenterProtocol: class {
     init(view: MainViewProtocol, networkService: CurrentWeatherNetworkServiceProtocol)
     var currentWeather: WeatherData? { get set }
-    func internerConnection()
 }
 
 class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManagerDelegate {
@@ -54,16 +53,6 @@ class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManagerDeleg
                     self.view?.failure(error: error)
                 }
             }
-        }
-    }
-    
-    func internerConnection() {
-        if NetworkConnect.shared.isConnected {
-            //temperatureLabel.text = "Its ok"
-            print("Connect success")
-        } else {
-            // temperatureLabel.text = "Denied"
-            print("Connect Denied")
         }
     }
 }

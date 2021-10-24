@@ -10,7 +10,6 @@
 		CF6625C180A927E8B2CCE595 /* Pods_WeatherAppTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2CD23D8296A89563C6902B /* Pods_WeatherAppTest.framework */; };
 		F06DDFCE271F2BA500A510D1 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DDFCC271F2BA500A510D1 /* ForecastViewController.swift */; };
 		F06DDFCF271F2BA500A510D1 /* ForecastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F06DDFCD271F2BA500A510D1 /* ForecastViewController.xib */; };
-		F06DDFD2271F4A3F00A510D1 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DDFD1271F4A3F00A510D1 /* UIView.swift */; };
 		F06DDFD4271F50B400A510D1 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DDFD3271F50B400A510D1 /* ModuleBuilder.swift */; };
 		F06DDFD727204E5A00A510D1 /* ForecastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DDFD627204E5A00A510D1 /* ForecastPresenter.swift */; };
 		F06DDFD927207A7600A510D1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DDFD827207A7600A510D1 /* MainTabBarController.swift */; };
@@ -37,7 +36,6 @@
 		EA2CD23D8296A89563C6902B /* Pods_WeatherAppTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAppTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F06DDFCC271F2BA500A510D1 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		F06DDFCD271F2BA500A510D1 /* ForecastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastViewController.xib; sourceTree = "<group>"; };
-		F06DDFD1271F4A3F00A510D1 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F06DDFD3271F50B400A510D1 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		F06DDFD627204E5A00A510D1 /* ForecastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPresenter.swift; sourceTree = "<group>"; };
 		F06DDFD827207A7600A510D1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -99,14 +97,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		F06DDFD0271F4A3000A510D1 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				F06DDFD1271F4A3F00A510D1 /* UIView.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		F06DDFD527204E4800A510D1 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +153,6 @@
 		F0B11000271F1F3300C0DF31 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
-				F06DDFD0271F4A3000A510D1 /* Extension */,
 				F0B11001271F1F3B00C0DF31 /* View */,
 				F0B11004271F1F7B00C0DF31 /* Model */,
 				F0B11005271F1F8500C0DF31 /* Presenter */,
@@ -334,7 +323,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F06DDFD2271F4A3F00A510D1 /* UIView.swift in Sources */,
 				F0B1100A271F200100C0DF31 /* CurrentWeather.swift in Sources */,
 				F06DDFD927207A7600A510D1 /* MainTabBarController.swift in Sources */,
 				F06DDFDB2721B25C00A510D1 /* ForecastWeather.swift in Sources */,
