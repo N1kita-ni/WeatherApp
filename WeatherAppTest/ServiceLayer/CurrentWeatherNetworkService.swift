@@ -10,12 +10,12 @@ import Foundation
 import CoreLocation
 
 protocol CurrentWeatherNetworkServiceProtocol {
-    func getCurrentWeather(lat: String, lon: String, complition: @escaping (Result<WeatherData?, Error>) -> ())
+    func getCurrentWeather(lat: String, lon: String, weather: String, complition: @escaping (Result<WeatherData?, Error>) -> ())
 }
 
 class CurrentWeatherNetworkService: CurrentWeatherNetworkServiceProtocol {
-    func getCurrentWeather(lat: String, lon: String, complition: @escaping (Result<WeatherData?, Error>) -> ()) {
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&units=metric&appid=45a10ef347f24b4147004f0eed17d99c"
+    func getCurrentWeather(lat: String, lon: String, weather: String, complition: @escaping (Result<WeatherData?, Error>) -> ()) {
+        let urlString = "https://api.openweathermap.org/data/2.5/\(weather)?lat=\(lat)&lon=\(lon)&units=metric&appid=45a10ef347f24b4147004f0eed17d99c"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in

@@ -9,12 +9,12 @@
 import Foundation
 
 protocol ForecastWeatherNetworkServiceProtocol {
- func getForecastWeather(lat: String, lon: String, complition: @escaping (Result<ForecastWeather?, Error>) -> ())
+    func getForecastWeather(lat: String, lon: String, forecast: String, complition: @escaping (Result<ForecastWeather?, Error>) -> ())
 }
 
 class ForecastWeatherNetworkService: ForecastWeatherNetworkServiceProtocol {
-    func getForecastWeather(lat: String, lon: String, complition: @escaping (Result<ForecastWeather?, Error>) -> ()) {
-        let urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&units=metric&appid=45a10ef347f24b4147004f0eed17d99c"
+    func getForecastWeather(lat: String, lon: String, forecast: String, complition: @escaping (Result<ForecastWeather?, Error>) -> ()) {
+        let urlString = "https://api.openweathermap.org/data/2.5/\(forecast)?lat=\(lat)&lon=\(lon)&units=metric&appid=45a10ef347f24b4147004f0eed17d99c"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in

@@ -24,6 +24,7 @@ class ForecastPresenter: NSObject, CLLocationManagerDelegate, ForecastViewPresen
     var currentLoc: CLLocation?
     var latitude : CLLocationDegrees!
     var longitude: CLLocationDegrees!
+    private let forecastProperty = "forecast"
     var forecastWeather: ForecastWeather?
     weak var view: ForecastViewProtocol?
     let networkService: ForecastWeatherNetworkServiceProtocol
@@ -42,7 +43,7 @@ class ForecastPresenter: NSObject, CLLocationManagerDelegate, ForecastViewPresen
         let location = locations[0].coordinate
         latitude = location.latitude
         longitude = location.longitude
-        networkService.getForecastWeather(lat: latitude.description, lon: longitude.description) { [weak self] (result) in
+        networkService.getForecastWeather(lat: latitude.description, lon: longitude.description, forecast: forecastProperty) { [weak self] (result) in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {

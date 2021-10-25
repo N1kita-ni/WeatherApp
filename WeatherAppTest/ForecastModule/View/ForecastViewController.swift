@@ -38,6 +38,7 @@ class ForecastViewController: UIViewController {
     var presenter: ForecastViewPresenterProtocol!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         forecastTableView.dataSource = self
         forecastTableView.delegate = self
         forecastSpinner.startAnimating()
@@ -94,7 +95,7 @@ class ForecastViewController: UIViewController {
 extension ForecastViewController: ForecastViewProtocol {
     func success() {
         //DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.title = "\(self.presenter.forecastWeather?.city.name ?? "Forecast")"
+            self.navigationItem.title = "\(self.presenter.forecastWeather?.city.name ?? "Forecast")"
             self.forecastTableView.reloadData()
         }
    // }
@@ -103,19 +104,11 @@ extension ForecastViewController: ForecastViewProtocol {
         print(error.localizedDescription)
     }
 }
-// MARK: - TableViewDataSource
-extension ForecastViewController: UITableViewDataSource {
+// MARK: - TableViewDataSource, TableViewDelegate
+extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let forecast = presenter.forecastWeather?.list
-//        let sectionArr = [forecast?[0], forecast?[1], forecast?[2], forecast?[3], forecast?[4], forecast?[5]]
-//        print(forecast?[7])
-//        switch section {
-//        case forecast?[0]:
-//            return
-//        default:
-//            <#code#>
-//        }
+        
         return presenter.forecastWeather?.list.count ?? 0
     }
     
@@ -128,21 +121,21 @@ extension ForecastViewController: UITableViewDataSource {
         let forecast = presenter.forecastWeather?.list[indexPath.row]
        let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
+        
+        let dateFormatterTime = DateFormatter()
+        dateFormatterTime.dateFormat = "HH:mm"
+        
+        let dateFormatterDay = DateFormatter()
+        dateFormatterDay.dateFormat = "EEEE"
+        
         if let date = dateFormatterGet.date(from: forecast?.dateTxt ?? "0") {
-            cell?.timeLabel.text  = dateFormatter.string(from: date)
+            cell?.timeLabel.text  = dateFormatterTime.string(from: date)
+        }
+
+        if let date = dateFormatterGet.date(from: forecast?.dateTxt ?? "0") {
+            cell?.weakDay.text = dateFormatterDay.string(from: date)
         }
         
-        let dateFormatterGet1 = DateFormatter()
-        dateFormatterGet1.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-        let dateFormatter1 = DateFormatter()
-        dateFormatter1.dateFormat = "EEEE"
-        guard let date = dateFormatterGet1.date(from: forecast?.dateTxt ?? "0") else { return UITableViewCell ()}
-        
-        cell?.weakDay.text = dateFormatter1.string(from: date)
         cell?.temperatureLabel.text = "\(Int(forecast?.main.temp ?? 0) )" + "°"
         cell?.forecastImage.sd_setImage(with: forecast?.weather[0].forecastWeatherIconURL, completed: nil)
         cell?.weatherLabel.text = "\(forecast?.weather[0].description ?? "No info")"
@@ -151,6 +144,10 @@ extension ForecastViewController: UITableViewDataSource {
 
         return cell ?? UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
 
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -158,21 +155,18 @@ extension ForecastViewController: UITableViewDataSource {
 //
 //    }
     // MARK: - TableViewDelegate
-    extension ForecastViewController: UITableViewDelegate {
-        
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let dateFormatterGet = DateFormatter()
-//        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//    extension ForecastViewController: UITableViewDelegate {
 //
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "EEEE"
-//        guard let date = dateFormatterGet.date(from: presenter.forecastWeather?.list[0].dateTxt ?? "0") else { return ""}
+////    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+////        let dateFormatterGet = DateFormatter()
+////        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+////
+////        let dateFormatter = DateFormatter()
+////        dateFormatter.dateFormat = "EEEE"
+////        guard let date = dateFormatterGet.date(from: presenter.forecastWeather?.list[0].dateTxt ?? "0") else { return ""}
+////
+////           return dateFormatter.string(from: date)
+////    }
+////
 //
-//           return dateFormatter.string(from: date)
-//    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
-}
+//}

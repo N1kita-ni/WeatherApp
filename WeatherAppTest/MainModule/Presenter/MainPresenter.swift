@@ -24,6 +24,7 @@ class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManagerDeleg
     var currentLoc: CLLocation?
     var latitude : CLLocationDegrees!
     var longitude: CLLocationDegrees!
+    private let weatherProperty = "weather"
     var currentWeather: WeatherData?
     weak var view: MainViewProtocol?
     let networkService: CurrentWeatherNetworkServiceProtocol
@@ -42,7 +43,7 @@ class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManagerDeleg
         let location = locations[0].coordinate
         latitude = location.latitude
         longitude = location.longitude
-        networkService.getCurrentWeather(lat: latitude.description, lon: longitude.description) { [weak self] (result) in
+        networkService.getCurrentWeather(lat: latitude.description, lon: longitude.description, weather: weatherProperty) { [weak self] (result) in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {

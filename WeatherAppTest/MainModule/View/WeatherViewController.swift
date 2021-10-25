@@ -10,6 +10,10 @@ import UIKit
 import SnapKit
 import SDWebImage
 
+enum Compass {
+    case N, NE, E, SE, S, SW, W, NW
+}
+
 final class WeatherViewController: UIViewController {
     
     var presenter: MainViewPresenterProtocol!
@@ -17,7 +21,6 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     let gradientStackView: UIStackView = {
         let stackView = UIStackView()
-       // stackView.frame = CGRect(x: 0, y: 0, width: 414, height: 5)
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         return stackView
@@ -54,7 +57,6 @@ final class WeatherViewController: UIViewController {
     
     let temperatureLabel: UILabel = {
            let label = UILabel()
-           //label.frame = CGRect(x: 10, y: 389, width: 394, height: 27)
            label.font = .systemFont(ofSize: 20, weight: .bold)
            label.text = " "
            label.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
@@ -64,7 +66,6 @@ final class WeatherViewController: UIViewController {
     
     let pictrureFirstStackView: UIStackView = {
         let stackView = UIStackView()
-        //stackView.frame = CGRect(x: 30, y: 437, width: 354, height: 24)
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         return stackView
@@ -75,7 +76,6 @@ final class WeatherViewController: UIViewController {
        let imageView = UIImageView()
         imageView.image = UIImage(named: "humidity")
         imageView.isHidden = true
-        //imageView.frame.size = CGSize(width: 24, height: 24)
         return imageView
     }()
 
@@ -83,7 +83,6 @@ final class WeatherViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "water_drop")
         imageView.isHidden = true
-       // imageView.frame.size = CGSize(width: 24, height: 24)
         return imageView
     }()
 
@@ -91,14 +90,12 @@ final class WeatherViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "pressure")
         imageView.isHidden = true
-        //imageView.frame.size = CGSize(width: 24, height: 24)
         return imageView
     }()
 
 
     let dataFirstStackView: UIStackView = {
         let stackView = UIStackView()
-       // stackView.frame = CGRect(x: 30, y: 466, width: 379, height: 17)
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         return stackView
@@ -106,34 +103,27 @@ final class WeatherViewController: UIViewController {
 
     let humidityLabel: UILabel = {
         let label = UILabel()
-       // label.frame.size = CGSize(width: 28, height: 17)
         label.font = .systemFont(ofSize: 14)
-        //label.text = "57%"
         label.textAlignment = .center
         return label
     }()
 
     let waterDropLabel: UILabel = {
         let label = UILabel()
-      //  label.frame.size = CGSize(width: 46.5, height: 17)
         label.font = .systemFont(ofSize: 14)
-       // label.text = "1.0 mm"
         label.textAlignment = .center
         return label
     }()
 
     let pressureLabel: UILabel = {
         let label = UILabel()
-       // label.frame.size = CGSize(width: 58.5, height: 17)
         label.font = .systemFont(ofSize: 14)
-       // label.text = "1000 hPa"
         label.textAlignment = .center
         return label
     }()
-//
+
     let pictureSecondStackView: UIStackView = {
            let stackView = UIStackView()
-           //stackView.frame = CGRect(x: 30, y: 491, width: 354, height: 24)
            stackView.axis = .horizontal
            stackView.distribution = .fillProportionally
            return stackView
@@ -144,7 +134,6 @@ final class WeatherViewController: UIViewController {
         imageView.image = UIImage(named: "windSpeed")
         imageView.isHidden = true
         imageView.contentMode = .scaleAspectFit
-        //imageView.frame.size = CGSize(width: 177, height: 24)
         return imageView
     }()
 
@@ -153,13 +142,11 @@ final class WeatherViewController: UIViewController {
         imageView.image = UIImage(named: "compass")
         imageView.isHidden = true
         imageView.contentMode = .scaleAspectFit
-        //imageView.frame.size = CGSize(width: 177, height: 24)
         return imageView
     }()
-//
+    
     let dataSecondStackView: UIStackView = {
         let stackView = UIStackView()
-      //  stackView.frame = CGRect(x: 95, y: 523, width: 254, height: 17)
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         return stackView
@@ -167,25 +154,20 @@ final class WeatherViewController: UIViewController {
 
     let windSpeedLabel: UILabel = {
         let label = UILabel()
-      //  label.frame.size = CGSize(width: 192.5, height: 17)
         label.font = .systemFont(ofSize: 14)
-       // label.text = "20 km/h"
         label.textAlignment = .center
         return label
     }()
 
     let compassLabel: UILabel = {
         let label = UILabel()
-       // label.frame.size = CGSize(width: 61.5, height: 17)
         label.font = .systemFont(ofSize: 14)
-        //label.text = "SE"
         label.textAlignment = .center
         return label
     }()
 
     let shareButton: UIButton = {
         let button = UIButton(type: .system)
-        //button.frame = CGRect(x: 10, y: 575, width: 394, height: 36)
         button.setTitle("Share", for: .normal)
         button.setTitleColor(.red, for: .normal)
         button.isHidden = true
@@ -194,11 +176,9 @@ final class WeatherViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
-       // let forecast = UIBarButtonItem(image: UIImage(systemName: "thermometer"), style: .plain, target: self, action: #selector(action))
         super.viewDidLoad()
         setupViews()
-        title = "Today"
-       // navigationItem.rightBarButtonItem = forecast
+        navigationItem.title = "Today"
         countryLabel.textAlignment = .center
         mainSpinner.startAnimating()
         mainSpinner.isHidden = false
@@ -219,7 +199,6 @@ final class WeatherViewController: UIViewController {
     
     private func internetConnection() {
         if NetworkConnect.shared.isConnected {
-            //temperatureLabel.text = "Its ok"
             print("Connect success")
         } else {
             let alert = UIAlertController(title: "Connect failed",
@@ -240,9 +219,6 @@ final class WeatherViewController: UIViewController {
         activityVC.popoverPresentationController?.sourceView = view
         present(activityVC, animated: true, completion: nil)
     }
-//    convenience init() {
-//        self.init(nibName: "WeatherViewController", bundle: nil)
-//    }
     
     private func hiden() {
         humidityImage.isHidden = false
@@ -337,14 +313,14 @@ final class WeatherViewController: UIViewController {
             //make.bottom.equalTo(pictureSecondStackView.snp.top).offset(8)
 
         }
-//
+
         pictureSecondStackView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview().inset(30)
             make.top.equalTo(dataFirstStackView.snp.bottom).offset(8)
             //make.bottom.equalToSuperview()
            // make.bottom.equalTo(dataSecondStackView.snp.top).offset(8)
         }
-//
+        
         dataSecondStackView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview().inset(30)
           //  make.bottom.equalToSuperview().priority(.low)
@@ -355,7 +331,6 @@ final class WeatherViewController: UIViewController {
         shareButton.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview().inset(50)
             make.top.equalTo(dataSecondStackView.snp.bottom).offset(35)
-//
         }
     }
 }
@@ -364,12 +339,34 @@ extension WeatherViewController: MainViewProtocol {
     func success() {
         //DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.hiden()
-            self.temperatureLabel.text = "\(Int(self.presenter.currentWeather?.main.temp ?? 1)) °C | " + "\(self.presenter.currentWeather?.weather[0].main ?? "хуй")"
+        
+        let worldSide = presenter.currentWeather?.wind.deg ?? 0
+        switch worldSide {
+        case 0:
+            compassLabel.text = "\(Compass.N)"
+        case 0..<90:
+            compassLabel.text = "\(Compass.NE)"
+        case 90:
+            compassLabel.text = "\(Compass.E)"
+        case 90..<180:
+            compassLabel.text = "\(Compass.SE)"
+        case 180:
+            compassLabel.text = "\(Compass.S)"
+        case 180..<270:
+            compassLabel.text = "\(Compass.SW)"
+        case 270:
+            compassLabel.text = "\(Compass.W)"
+        case 270..<360:
+            compassLabel.text = "\(Compass.NW)"
+        default:
+            compassLabel.text = "\(Compass.N)"
+        }
+                    self.temperatureLabel.text = "\(Int(self.presenter.currentWeather?.main.temp ?? 1)) °C | " + "\(self.presenter.currentWeather?.weather[0].main ?? "No info")"
             self.imageView.sd_setImage(with: self.presenter.currentWeather?.weather[0].weatherIconURL, completed: nil)
-            self.countryLabel.text = "\(self.presenter.currentWeather?.name ?? "Nil"), " + "\(self.presenter.currentWeather?.sys.country ?? "Nil")"
+            self.countryLabel.text = "\(self.presenter.currentWeather?.name ?? "No info"), " + "\(self.presenter.currentWeather?.sys.country ?? "No info")"
             self.pressureLabel.text = "\(self.presenter.currentWeather?.main.pressure ?? 0) " + "hPa"
             self.windSpeedLabel.text = "\(self.presenter.currentWeather?.wind.speed ?? 0) " + "km/h"
-            self.compassLabel.text = "\(self.presenter.currentWeather?.wind.deg ?? 360)"
+           // self.compassLabel.text = "\(self.presenter.currentWeather?.wind.deg ?? 360)"
             self.humidityLabel.text = "\(self.presenter.currentWeather?.main.humidity ?? 0)" + "%"
             self.waterDropLabel.text = "735 mm" // Не нашел в Api информацию об осадках
         }

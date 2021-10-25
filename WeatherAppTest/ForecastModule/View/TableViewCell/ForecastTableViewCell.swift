@@ -53,6 +53,8 @@ class ForecastTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -63,8 +65,8 @@ class ForecastTableViewCell: UITableViewCell {
         addSubview(temperatureLabel)
         addSubview(forecastImage)
         addSubview(timeLabel)
-        addSubview(weatherLabel)
         addSubview(weakDay)
+        addSubview(weatherLabel)
         setupConstr()
     }
     
@@ -72,8 +74,6 @@ class ForecastTableViewCell: UITableViewCell {
         temperatureLabel.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.trailing.equalToSuperview().inset(3)
-            //make.leading.equalToSuperview().inset(50)
-            
         }
         
         forecastImage.snp.makeConstraints { (make) in
@@ -81,13 +81,12 @@ class ForecastTableViewCell: UITableViewCell {
             make.top.bottom.equalToSuperview()
             make.height.width.equalTo(100)
         }
-        
+
         timeLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(forecastImage.snp.trailing).offset(10)
-            //make.trailing.equalTo(temperatureLabel.snp.leading).offset(100)
             make.top.equalToSuperview().inset(20)
         }
-        
+
         weatherLabel.snp.makeConstraints { (make) in
             make.leading.equalTo(forecastImage.snp.trailing).offset(10)
             make.top.equalTo(timeLabel.snp.bottom).offset(10)
