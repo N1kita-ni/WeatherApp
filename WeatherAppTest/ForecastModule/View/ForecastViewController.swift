@@ -118,27 +118,11 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.reuseIdentifier, for: indexPath) as? ForecastTableViewCell
-        let forecast = presenter.forecastWeather?.list[indexPath.row]
-       let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        guard let forecast = presenter.forecastWeather else { return UITableViewCell() }
+        let index = indexPath.row
         
-        let dateFormatterTime = DateFormatter()
-        dateFormatterTime.dateFormat = "HH:mm"
+        cell?.configure(indexPath: index, forecast: forecast)
         
-        let dateFormatterDay = DateFormatter()
-        dateFormatterDay.dateFormat = "EEEE"
-        
-        if let date = dateFormatterGet.date(from: forecast?.dateTxt ?? "0") {
-            cell?.timeLabel.text  = dateFormatterTime.string(from: date)
-        }
-
-        if let date = dateFormatterGet.date(from: forecast?.dateTxt ?? "0") {
-            cell?.weakDay.text = dateFormatterDay.string(from: date)
-        }
-        
-        cell?.temperatureLabel.text = "\(Int(forecast?.main.temp ?? 0) )" + "°"
-        cell?.forecastImage.sd_setImage(with: forecast?.weather[0].forecastWeatherIconURL, completed: nil)
-        cell?.weatherLabel.text = "\(forecast?.weather[0].description ?? "No info")"
         self.forecastSpinner.stopAnimating()
         self.forecastSpinner.isHidden = true
 

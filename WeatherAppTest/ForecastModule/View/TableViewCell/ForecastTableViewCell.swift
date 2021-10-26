@@ -53,8 +53,6 @@ class ForecastTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -97,15 +95,26 @@ class ForecastTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(indexPath: Int) {
+    func configure(indexPath: Int, forecast: ForecastWeather) {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
         
-        temperatureLabel.text = "\(Int(presener.forecastWeather?.list[indexPath].main.temp ?? 0))"
-        forecastImage.sd_setImage(with: presener.forecastWeather?.list[indexPath].weather[0].forecastWeatherIconURL, completed: nil)
-        timeLabel.text = "\(dateFormatter.date(from: presener.forecastWeather?.list[indexPath].dateTxt ?? "0" ) ?? Date())"
+        let dateFormatterTime = DateFormatter()
+        dateFormatterTime.dateFormat = "HH:mm"
+        
+        let dateFormatterDay = DateFormatter()
+        dateFormatterDay.dateFormat = "EEEE"
+        
+        if let date = dateFormatterGet.date(from: forecast.list[indexPath].dateTxt) {
+            timeLabel.text  = dateFormatterTime.string(from: date)
+        }
+        
+        if let date = dateFormatterGet.date(from: forecast.list[indexPath].dateTxt ) {
+            weakDay.text = dateFormatterDay.string(from: date)
+        }
+        
+        temperatureLabel.text = "\(Int(forecast.list[indexPath].main.temp))" + "°"
+        forecastImage.sd_setImage(with: forecast.list[indexPath].weather[0].forecastWeatherIconURL, completed: nil)
+        weatherLabel.text = "\(forecast.list[indexPath].weather[0].description)"
     }
 }
