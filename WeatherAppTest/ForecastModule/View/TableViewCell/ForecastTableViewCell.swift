@@ -13,7 +13,6 @@ import SDWebImage
 class ForecastTableViewCell: UITableViewCell {
 
    static let reuseIdentifier = "forecastCell"
-    var presener: ForecastViewPresenterProtocol!
     
     let temperatureLabel: UILabel = {
         let tempLabel = UILabel()

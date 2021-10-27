@@ -42,3 +42,4 @@ struct WeatherForecast: Codable {
 struct MainForecast: Codable {
     let temp: Double
 }
+

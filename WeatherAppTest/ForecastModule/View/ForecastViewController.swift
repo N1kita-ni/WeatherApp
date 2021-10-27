@@ -8,7 +8,6 @@
 
 import UIKit
 import SnapKit
-import SDWebImage
 
 class ForecastViewController: UIViewController {
     
@@ -94,11 +93,9 @@ class ForecastViewController: UIViewController {
 
 extension ForecastViewController: ForecastViewProtocol {
     func success() {
-        //DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.navigationItem.title = "\(self.presenter.forecastWeather?.city.name ?? "Forecast")"
             self.forecastTableView.reloadData()
         }
-   // }
         
     func failure(error: Error) {
         print(error.localizedDescription)
@@ -111,10 +108,6 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
         
         return presenter.forecastWeather?.list.count ?? 0
     }
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 6
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.reuseIdentifier, for: indexPath) as? ForecastTableViewCell
@@ -133,24 +126,3 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
         return 100
     }
 }
-
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.reuseIdentifier) as? ForecastTableViewCell
-//
-//    }
-    // MARK: - TableViewDelegate
-//    extension ForecastViewController: UITableViewDelegate {
-//
-////    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-////        let dateFormatterGet = DateFormatter()
-////        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
-////
-////        let dateFormatter = DateFormatter()
-////        dateFormatter.dateFormat = "EEEE"
-////        guard let date = dateFormatterGet.date(from: presenter.forecastWeather?.list[0].dateTxt ?? "0") else { return ""}
-////
-////           return dateFormatter.string(from: date)
-////    }
-////
-//
-//}

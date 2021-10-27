@@ -123,6 +123,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F06DDFE82729B1AC00A510D1 /* ModuleBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				F06DDFD3271F50B400A510D1 /* ModuleBuilder.swift */,
+			);
+			path = ModuleBuilder;
+			sourceTree = "<group>";
+		};
+		F06DDFE92729B1B900A510D1 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				F06DDFD827207A7600A510D1 /* MainTabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
 		F0B10FE0271F1EEB00C0DF31 = {
 			isa = PBXGroup;
 			children = (
@@ -146,7 +162,8 @@
 			children = (
 				F0B10FEC271F1EEB00C0DF31 /* AppDelegate.swift */,
 				F0B10FEE271F1EEB00C0DF31 /* SceneDelegate.swift */,
-				F06DDFD3271F50B400A510D1 /* ModuleBuilder.swift */,
+				F06DDFE82729B1AC00A510D1 /* ModuleBuilder */,
+				F06DDFE92729B1B900A510D1 /* TabBarController */,
 				F06DDFCA271F2B8100A510D1 /* ForecastModule */,
 				F0B11006271F1F9400C0DF31 /* ServiceLayer */,
 				F0B11000271F1F3300C0DF31 /* MainModule */,
@@ -154,7 +171,6 @@
 				F0B10FF5271F1EEC00C0DF31 /* Assets.xcassets */,
 				F0B10FF7271F1EEC00C0DF31 /* LaunchScreen.storyboard */,
 				F0B10FFA271F1EEC00C0DF31 /* Info.plist */,
-				F06DDFD827207A7600A510D1 /* MainTabBarController.swift */,
 			);
 			path = WeatherAppTest;
 			sourceTree = "<group>";

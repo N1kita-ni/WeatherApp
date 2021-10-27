@@ -19,7 +19,7 @@ protocol MainViewPresenterProtocol: class {
     var currentWeather: WeatherData? { get set }
 }
 
-class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManagerDelegate {
+final class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     var currentLoc: CLLocation?
     var latitude : CLLocationDegrees!
@@ -39,7 +39,7 @@ class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManagerDeleg
         locationManager.startUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0].coordinate
         latitude = location.latitude
         longitude = location.longitude

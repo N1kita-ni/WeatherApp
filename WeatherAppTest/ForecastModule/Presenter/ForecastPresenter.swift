@@ -19,7 +19,7 @@ protocol ForecastViewPresenterProtocol: class {
     var forecastWeather: ForecastWeather? { get set }
 }
 
-class ForecastPresenter: NSObject, CLLocationManagerDelegate, ForecastViewPresenterProtocol {
+final class ForecastPresenter: NSObject, CLLocationManagerDelegate, ForecastViewPresenterProtocol {
     var locationManager = CLLocationManager()
     var currentLoc: CLLocation?
     var latitude : CLLocationDegrees!
@@ -49,11 +49,10 @@ class ForecastPresenter: NSObject, CLLocationManagerDelegate, ForecastViewPresen
                 switch result {
                 case .success(let forecast):
                     self.forecastWeather = forecast
-                   // self.view?.success()
-                    print(Thread.current)
+                    self.view?.success()
                 case.failure(let error):
                     print(error.localizedDescription)
-                   // self.view?.failure(error: error)
+                    self.view?.failure(error: error)
                 }
             }
         }
