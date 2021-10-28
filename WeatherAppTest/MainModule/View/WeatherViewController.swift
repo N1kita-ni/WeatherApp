@@ -305,26 +305,9 @@ extension WeatherViewController: MainViewProtocol {
         hideElements()
         
         let worldSide = presenter.currentWeather?.wind.deg ?? 0
-        switch worldSide {
-        case 0:
-            compassLabel.text = "\(Compass.N)"
-        case 0..<90:
-            compassLabel.text = "\(Compass.NE)"
-        case 90:
-            compassLabel.text = "\(Compass.E)"
-        case 90..<180:
-            compassLabel.text = "\(Compass.SE)"
-        case 180:
-            compassLabel.text = "\(Compass.S)"
-        case 180..<270:
-            compassLabel.text = "\(Compass.SW)"
-        case 270:
-            compassLabel.text = "\(Compass.W)"
-        case 270..<360:
-            compassLabel.text = "\(Compass.NW)"
-        default:
-            compassLabel.text = "\(Compass.N)"
-        }
+        let compassValue = Compass(degree: worldSide)
+        compassLabel.text = compassValue.rawValue
+        
         
         temperatureLabel.text = "\(Int(presenter.currentWeather?.main.temp ?? 1)) °C | " + "\(presenter.currentWeather?.weather[0].main ?? "No info")"
         imageView.sd_setImage(with: presenter.currentWeather?.weather[0].weatherIconURL, completed: nil)

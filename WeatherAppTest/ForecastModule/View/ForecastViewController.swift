@@ -14,6 +14,7 @@ class ForecastViewController: UIViewController {
     let forecastTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: ForecastTableViewCell.reuseIdentifier)
+        tableView.allowsSelection = false 
         return tableView
     }()
     
