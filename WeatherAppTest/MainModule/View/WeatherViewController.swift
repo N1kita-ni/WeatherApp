@@ -257,7 +257,7 @@ final class WeatherViewController: UIViewController {
         
         imageView.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview().inset(132)
-            make.width.lessThanOrEqualToSuperview() //lessThanOrEqualTo(150) ???
+            make.width.lessThanOrEqualToSuperview()
             make.height.equalTo(150)
             make.top.equalTo(gradientStackView.snp.bottom).offset(20)
         }

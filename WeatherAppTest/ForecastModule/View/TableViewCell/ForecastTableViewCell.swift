@@ -36,13 +36,6 @@ class ForecastTableViewCell: UITableViewCell {
         return state
     }()
     
-    let weakDay: UILabel = {
-        let state = UILabel()
-        state.font = .systemFont(ofSize: 15, weight: .bold)
-        state.textAlignment = .center
-        return state
-    }()
-    
     let forecastImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -62,7 +55,6 @@ class ForecastTableViewCell: UITableViewCell {
         addSubview(temperatureLabel)
         addSubview(forecastImage)
         addSubview(timeLabel)
-        addSubview(weakDay)
         addSubview(weatherLabel)
         setupConstr()
     }
@@ -88,13 +80,9 @@ class ForecastTableViewCell: UITableViewCell {
             make.leading.equalTo(forecastImage.snp.trailing).offset(10)
             make.top.equalTo(timeLabel.snp.bottom).offset(10)
         }
-        weakDay.snp.makeConstraints { (make) in
-            make.leading.equalTo(forecastImage.snp.trailing).offset(10)
-            make.top.equalTo(weatherLabel.snp.bottom).offset(10)
-        }
     }
     
-    func configure(indexPath: Int, forecast: ForecastWeather) {
+    func configure(forecast: ForecastData) {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
@@ -104,16 +92,12 @@ class ForecastTableViewCell: UITableViewCell {
         let dateFormatterDay = DateFormatter()
         dateFormatterDay.dateFormat = "EEEE"
         
-        if let date = dateFormatterGet.date(from: forecast.list[indexPath].dateTxt) {
+        if let date = dateFormatterGet.date(from: forecast.dateTxt) {
             timeLabel.text  = dateFormatterTime.string(from: date)
         }
         
-        if let date = dateFormatterGet.date(from: forecast.list[indexPath].dateTxt ) {
-            weakDay.text = dateFormatterDay.string(from: date)
-        }
-        
-        temperatureLabel.text = "\(Int(forecast.list[indexPath].main.temp))" + "°"
-        forecastImage.sd_setImage(with: forecast.list[indexPath].weather[0].forecastWeatherIconURL, completed: nil)
-        weatherLabel.text = "\(forecast.list[indexPath].weather[0].description)"
+        temperatureLabel.text = "\(Int(forecast.main.temp))" + "°"
+        forecastImage.sd_setImage(with: forecast.weather[0].forecastWeatherIconURL, completed: nil)
+        weatherLabel.text = "\(forecast.weather[0].description)"
     }
 }

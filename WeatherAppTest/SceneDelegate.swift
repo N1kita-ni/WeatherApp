@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = MainTabBarController()
-        window?.makeKeyAndVisible() // Покажи(запустить)
+        window?.makeKeyAndVisible() 
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

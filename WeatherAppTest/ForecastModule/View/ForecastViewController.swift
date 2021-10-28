@@ -33,7 +33,6 @@ class ForecastViewController: UIViewController {
     }()
     
     var colors: [UIColor] = [#colorLiteral(red: 0.9098039269, green: 0.5254884555, blue: 0.5817584947, alpha: 1), #colorLiteral(red: 1, green: 0.9975345455, blue: 0.6872003919, alpha: 1), #colorLiteral(red: 0.5961294384, green: 0.7331562011, blue: 1, alpha: 1), #colorLiteral(red: 0.6930560762, green: 1, blue: 0.6908935261, alpha: 1), #colorLiteral(red: 0.9824787424, green: 0.7485847892, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.8281603211, blue: 0.7240381341, alpha: 1)]
-  //  var colors: [UIColor] = [.red, .yellow, .blue, .green, .systemPink, .orange]
     
     var presenter: ForecastViewPresenterProtocol!
     override func viewDidLoad() {
@@ -94,8 +93,8 @@ class ForecastViewController: UIViewController {
 
 extension ForecastViewController: ForecastViewProtocol {
     func success() {
-            self.navigationItem.title = "\(self.presenter.forecastWeather?.city.name ?? "Forecast")"
-            self.forecastTableView.reloadData()
+        navigationItem.title = (presenter.forecastWeather?.city.name ?? "Forecast")
+            forecastTableView.reloadData()
         }
         
     func failure(error: Error) {
@@ -107,20 +106,42 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return presenter.forecastWeather?.list.count ?? 0
+        return presenter.forecastSections[section].data.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return presenter.forecastSections.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.reuseIdentifier, for: indexPath) as? ForecastTableViewCell
-        guard let forecast = presenter.forecastWeather else { return UITableViewCell() }
-        let index = indexPath.row
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.reuseIdentifier, for: indexPath) as? ForecastTableViewCell else { return UITableViewCell() }
         
-        cell?.configure(indexPath: index, forecast: forecast)
+        cell.configure(forecast: presenter.forecastSections[indexPath.section].data[indexPath.row])
         
         self.forecastSpinner.stopAnimating()
         self.forecastSpinner.isHidden = true
 
-        return cell ?? UITableViewCell()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .systemGray3
+        let label = UILabel()
+        view.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.trailing.bottom.top.equalToSuperview()
+            make.leading.equalToSuperview().inset(10)
+        }
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 20)
+        label.text = presenter.forecastSections[section].header
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

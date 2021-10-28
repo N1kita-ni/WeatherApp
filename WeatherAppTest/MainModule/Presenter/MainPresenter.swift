@@ -21,9 +21,6 @@ protocol MainViewPresenterProtocol: class {
 
 final class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
-    var currentLoc: CLLocation?
-    var latitude : CLLocationDegrees!
-    var longitude: CLLocationDegrees!
     private let weatherProperty = "weather"
     var currentWeather: WeatherData?
     weak var view: MainViewProtocol?
@@ -40,10 +37,8 @@ final class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManage
     }
     
      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0].coordinate
-        latitude = location.latitude
-        longitude = location.longitude
-        networkService.getCurrentWeather(lat: latitude.description, lon: longitude.description, weather: weatherProperty) { [weak self] (result) in
+        guard let location = locations.first?.coordinate else { return }
+        networkService.getCurrentWeather(lat: location.latitude.description, lon: location.longitude.description, weather: weatherProperty) { [weak self] (result) in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {

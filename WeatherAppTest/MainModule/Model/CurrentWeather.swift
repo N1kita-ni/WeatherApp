@@ -41,7 +41,7 @@ struct Wind: Codable {
     let deg: Int
 }
 
-enum Compass: String { // Хз где этот енам писать
+enum Compass: String { 
     case N, NE, E, SE, S, SW, W, NW
     
     init(degree: Int) {
