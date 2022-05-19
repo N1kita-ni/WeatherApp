@@ -308,7 +308,6 @@ extension WeatherViewController: MainViewProtocol {
         let compassValue = Compass(degree: worldSide)
         compassLabel.text = compassValue.rawValue
         
-        
         temperatureLabel.text = "\(Int(presenter.currentWeather?.main.temp ?? 1)) °C | " + "\(presenter.currentWeather?.weather[0].main ?? "No info")"
         imageView.sd_setImage(with: presenter.currentWeather?.weather[0].weatherIconURL, completed: nil)
         countryLabel.text = "\(presenter.currentWeather?.name ?? "No info"), " + "\(presenter.currentWeather?.sys.country ?? "No info")"

@@ -16,7 +16,7 @@ protocol BuilderProtocol {
 class ModuleBuilder: BuilderProtocol {
     static func createMainModule() -> UIViewController {
         let view = WeatherViewController()
-        let networkService = CurrentWeatherNetworkService()
+        let networkService = GetDataService()
         let presenter = MainPresenter(view: view, networkService: networkService)
         view.presenter = presenter
         return view
@@ -24,7 +24,7 @@ class ModuleBuilder: BuilderProtocol {
     
     static func createForecastModule() -> UIViewController {
         let view = ForecastViewController()
-        let networkService = ForecastWeatherNetworkService()
+        let networkService = GetDataService()
         let presenter = ForecastPresenter(view: view, networkService: networkService)
         view.presenter = presenter
         return view

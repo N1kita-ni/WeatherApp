@@ -13,7 +13,7 @@ extension Date {
         let calendar = Calendar.current
         if calendar.isDateInToday(self) {
             return "Today"
-        } 
+        }
         else {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE, MMM d"

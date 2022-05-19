@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreLocation
 
 protocol CurrentWeatherNetworkServiceProtocol {
     func getCurrentWeather(lat: String, lon: String, weather: String, complition: @escaping (Result<WeatherData?, Error>) -> ())

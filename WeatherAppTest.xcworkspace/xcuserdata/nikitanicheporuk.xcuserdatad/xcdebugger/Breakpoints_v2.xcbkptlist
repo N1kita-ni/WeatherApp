@@ -62,8 +62,8 @@
             filePath = "WeatherAppTest/MainModule/Presenter/MainPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "init(view:networkService:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "WeatherAppTest/MainModule/Presenter/MainPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "locationManager(_:didUpdateLocations:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -167,54 +167,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "83985AA2-372A-4926-9AAD-77C0DECBB8C9"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherAppTest/ForecastModule/Presenter/ForecastPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "84B65977-CF3C-45E8-917E-9592B407C002"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherAppTest/ForecastModule/Presenter/ForecastPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "057B7F01-0B15-4C61-9EA2-73B4220E2744"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherAppTest/ForecastModule/Presenter/ForecastPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "BF6C3E14-804C-48FE-8102-06881881A72C"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -247,22 +199,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3ADC4B37-A151-42A0-A52C-652456A2677A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherAppTest/ForecastModule/Presenter/ForecastPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "5004AB80-AE28-467B-826B-A3DBA0B2C318"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -273,6 +209,180 @@
             startingLineNumber = "101"
             endingLineNumber = "101"
             landmarkName = "configure(forecast:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "947788A2-E5F5-4871-8D90-2CEA78BB3503"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTest/MainModule/View/WeatherViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "325"
+            endingLineNumber = "325">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30E40D3F-3A09-4725-9B1E-15A7B7A06C6C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTest/MainModule/Presenter/MainPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "init(view:networkService:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "30E40D3F-3A09-4725-9B1E-15A7B7A06C6C - e68ef41894f47ed9"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherAppTest.MainPresenter.__allocating_init(view: WeatherAppTest.MainViewProtocol, networkService: WeatherAppTest.CurrentWeatherNetworkServiceProtocol) -&gt; WeatherAppTest.MainPresenter"
+                  moduleName = "WeatherAppTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nikitanicheporuk/Desktop/WeatherAppTest/WeatherAppTest/MainModule/Presenter/MainPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "30E40D3F-3A09-4725-9B1E-15A7B7A06C6C - d1b17d172f02e2ec"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherAppTest.MainPresenter.init(view: WeatherAppTest.MainViewProtocol, networkService: WeatherAppTest.CurrentWeatherNetworkServiceProtocol) -&gt; WeatherAppTest.MainPresenter"
+                  moduleName = "WeatherAppTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nikitanicheporuk/Desktop/WeatherAppTest/WeatherAppTest/MainModule/Presenter/MainPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "63">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EEAE5E80-A340-487C-8311-B84AF3091196"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTest/MainModule/Presenter/MainPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB394DA4-0DBC-44C3-BD58-12AC3428000E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTest/ServiceLayer/CurrentWeatherNetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getCurrentWeather(lat:lon:weather:complition:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FB394DA4-0DBC-44C3-BD58-12AC3428000E - ff3ef59dbb8567d0"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherAppTest.CurrentWeatherNetworkService.getCurrentWeather(lat: Swift.String, lon: Swift.String, weather: Swift.String, complition: (Swift.Result&lt;Swift.Optional&lt;WeatherAppTest.WeatherData&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "WeatherAppTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nikitanicheporuk/Desktop/WeatherAppTest/WeatherAppTest/ServiceLayer/CurrentWeatherNetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1532">
+               </Location>
+               <Location
+                  uuid = "FB394DA4-0DBC-44C3-BD58-12AC3428000E - cc0773b5f2b5c899"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in WeatherAppTest.CurrentWeatherNetworkService.getCurrentWeather(lat: Swift.String, lon: Swift.String, weather: Swift.String, complition: (Swift.Result&lt;Swift.Optional&lt;WeatherAppTest.WeatherData&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "WeatherAppTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nikitanicheporuk/Desktop/WeatherAppTest/WeatherAppTest/ServiceLayer/CurrentWeatherNetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "1639">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "781FD6E0-1864-4BF0-8B0C-DE8844A2806A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTest/ServiceLayer/CurrentWeatherNetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "getCurrentWeather(lat:lon:weather:complition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1DACECD9-3637-41AE-835F-624AD4DA0D7F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTest/ServiceLayer/CurrentWeatherNetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "getCurrentWeather(lat:lon:weather:complition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E05E981F-AA07-4E8D-886E-43372547D5E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherAppTest/ServiceLayer/CurrentWeatherNetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "getCurrentWeather(lat:lon:weather:complition:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

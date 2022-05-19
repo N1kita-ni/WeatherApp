@@ -15,18 +15,18 @@ protocol MainViewProtocol: class {
 }
 
 protocol MainViewPresenterProtocol: class {
-    init(view: MainViewProtocol, networkService: CurrentWeatherNetworkServiceProtocol)
+    init(view: MainViewProtocol, networkService: GetDataProtocol)
     var currentWeather: WeatherData? { get set }
 }
 
-final class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManagerDelegate {
+ final class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManagerDelegate {
     var locationManager = CLLocationManager()
     private let weatherProperty = "weather"
     var currentWeather: WeatherData?
     weak var view: MainViewProtocol?
-    let networkService: CurrentWeatherNetworkServiceProtocol
+    let networkService: GetDataProtocol
     
-    required init(view: MainViewProtocol, networkService: CurrentWeatherNetworkServiceProtocol) {
+    init(view: MainViewProtocol, networkService: GetDataProtocol) {
         self.view = view
         self.networkService = networkService
         super.init()
@@ -38,7 +38,7 @@ final class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManage
     
      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first?.coordinate else { return }
-        networkService.getCurrentWeather(lat: location.latitude.description, lon: location.longitude.description, weather: weatherProperty) { [weak self] (result) in
+        networkService.genericGetData(urlString: "https://api.openweathermap.org/data/2.5/\(weatherProperty)?lat=\(location.latitude.description)&lon=\(location.longitude.description)&units=metric&appid=45a10ef347f24b4147004f0eed17d99c", of_: WeatherData.self) { [weak self] (result) in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {
@@ -50,6 +50,18 @@ final class MainPresenter: NSObject, MainViewPresenterProtocol, CLLocationManage
                 }
             }
         }
+//        networkService.getCurrentWeather(lat: location.latitude.description, lon: location.longitude.description, weather: weatherProperty, of_: WeatherData.self) { [weak self] (result) in
+//            DispatchQueue.main.async {
+//                guard let self = self else { return }
+//                switch result {
+//                case .success(let weather):
+//                    self.currentWeather = weather
+//                    self.view?.success()
+//                case .failure(let error):
+//                    self.view?.failure(error: error)
+//                }
+//            }
+//        }
     }
 }
 
