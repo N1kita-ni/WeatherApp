@@ -18,23 +18,23 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    let gradientStackView: UIStackView = {
+    private lazy var gradientStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         return stackView
     }()
     
-    var colors: [UIColor] = [#colorLiteral(red: 0.9098039269, green: 0.5254884555, blue: 0.5817584947, alpha: 1), #colorLiteral(red: 1, green: 0.9975345455, blue: 0.6872003919, alpha: 1), #colorLiteral(red: 0.5961294384, green: 0.7331562011, blue: 1, alpha: 1), #colorLiteral(red: 0.6930560762, green: 1, blue: 0.6908935261, alpha: 1), #colorLiteral(red: 0.9824787424, green: 0.7485847892, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.8281603211, blue: 0.7240381341, alpha: 1)]
+    private let colors: [UIColor] = [#colorLiteral(red: 0.9098039269, green: 0.5254884555, blue: 0.5817584947, alpha: 1), #colorLiteral(red: 1, green: 0.9975345455, blue: 0.6872003919, alpha: 1), #colorLiteral(red: 0.5961294384, green: 0.7331562011, blue: 1, alpha: 1), #colorLiteral(red: 0.6930560762, green: 1, blue: 0.6908935261, alpha: 1), #colorLiteral(red: 0.9824787424, green: 0.7485847892, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.8281603211, blue: 0.7240381341, alpha: 1)]
     
-    let mainSpinner: UIActivityIndicatorView = {
+    private lazy var mainSpinner: UIActivityIndicatorView = {
         let spiner = UIActivityIndicatorView()
         spiner.color = .black
         spiner.style = .large
         return spiner
     }()
     
-    let temperatureLabel: UILabel = {
+    private lazy var temperatureLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.text = " "
@@ -43,7 +43,7 @@ final class WeatherViewController: UIViewController {
         return label
     }()
     
-    let pictrureFirstStackView: UIStackView = {
+    private lazy var pictrureFirstStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
@@ -51,21 +51,21 @@ final class WeatherViewController: UIViewController {
     }()
     
     
-    let humidityImage: UIImageView = {
+    private lazy var humidityImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "humidity")
         imageView.isHidden = true
         return imageView
     }()
     
-    let waterDropImage: UIImageView = {
+    private lazy var waterDropImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "water_drop")
         imageView.isHidden = true
         return imageView
     }()
     
-    let pressureImage: UIImageView = {
+    private lazy var pressureImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "pressure")
         imageView.isHidden = true
@@ -73,42 +73,42 @@ final class WeatherViewController: UIViewController {
     }()
     
     
-    let dataFirstStackView: UIStackView = {
+    private lazy var dataFirstStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         return stackView
     }()
     
-    let humidityLabel: UILabel = {
+    private lazy var humidityLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textAlignment = .center
         return label
     }()
     
-    let waterDropLabel: UILabel = {
+    private lazy var waterDropLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textAlignment = .center
         return label
     }()
     
-    let pressureLabel: UILabel = {
+    private lazy var pressureLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textAlignment = .center
         return label
     }()
     
-    let pictureSecondStackView: UIStackView = {
+    private lazy var pictureSecondStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
         return stackView
     }()
     
-    let windSpeedImage: UIImageView = {
+    private lazy var windSpeedImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "windSpeed")
         imageView.isHidden = true
@@ -116,7 +116,7 @@ final class WeatherViewController: UIViewController {
         return imageView
     }()
     
-    let compassImage: UIImageView = {
+    private lazy var compassImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "compass")
         imageView.isHidden = true
@@ -124,28 +124,28 @@ final class WeatherViewController: UIViewController {
         return imageView
     }()
     
-    let dataSecondStackView: UIStackView = {
+    private lazy var dataSecondStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         return stackView
     }()
     
-    let windSpeedLabel: UILabel = {
+    private lazy var windSpeedLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textAlignment = .center
         return label
     }()
     
-    let compassLabel: UILabel = {
+    private lazy var compassLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textAlignment = .center
         return label
     }()
     
-    let shareButton: UIButton = {
+    private lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Share", for: .normal)
         button.setTitleColor(.red, for: .normal)
@@ -213,14 +213,22 @@ final class WeatherViewController: UIViewController {
     private func setupViews() {
         //view.addSubview(weatherImage)
         // view.addSubview(countryLabel)
-        view.addSubview(temperatureLabel)
-        view.addSubview(gradientStackView)
-        view.addSubview(shareButton)
-        view.addSubview(mainSpinner)
+//        view.addSubview(temperatureLabel)
+//        view.addSubview(gradientStackView)
+//        view.addSubview(shareButton)
+//        view.addSubview(mainSpinner)
+        view.addSubviews([temperatureLabel,
+                          gradientStackView,
+                          shareButton,
+                          mainSpinner,
+                          pictrureFirstStackView,
+                          dataFirstStackView,
+                          pictureSecondStackView,
+                          dataSecondStackView])
         
-        for color in colors {
+            colors.forEach {
             let view = UIView()
-            view.backgroundColor = color
+            view.backgroundColor = $0
             view.alpha = 0.8
             gradientStackView.addArrangedSubview(view)
         }
@@ -229,21 +237,21 @@ final class WeatherViewController: UIViewController {
             make.height.equalTo(5)
         }
         
-        view.addSubview(pictrureFirstStackView)
+       // view.addSubview(pictrureFirstStackView)
         pictrureFirstStackView.addArrangedSubview(humidityImage)
         pictrureFirstStackView.addArrangedSubview(waterDropImage)
         pictrureFirstStackView.addArrangedSubview(pressureImage)
         
-        view.addSubview(dataFirstStackView)
+       // view.addSubview(dataFirstStackView)
         dataFirstStackView.addArrangedSubview(humidityLabel)
         dataFirstStackView.addArrangedSubview(waterDropLabel)
         dataFirstStackView.addArrangedSubview(pressureLabel)
         
-        view.addSubview(pictureSecondStackView)
+       // view.addSubview(pictureSecondStackView)
         pictureSecondStackView.addArrangedSubview(windSpeedImage)
         pictureSecondStackView.addArrangedSubview(compassImage)
         
-        view.addSubview(dataSecondStackView)
+       // view.addSubview(dataSecondStackView)
         dataSecondStackView.addArrangedSubview(windSpeedLabel)
         dataSecondStackView.addArrangedSubview(compassLabel)
         

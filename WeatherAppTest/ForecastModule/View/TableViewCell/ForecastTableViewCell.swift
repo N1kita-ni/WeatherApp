@@ -12,9 +12,9 @@ import SDWebImage
 
 class ForecastTableViewCell: UITableViewCell {
 
-   static let reuseIdentifier = "forecastCell"
+  // static let reuseIdentifier = "forecastCell"
     
-    let temperatureLabel: UILabel = {
+   private lazy var temperatureLabel: UILabel = {
         let tempLabel = UILabel()
         tempLabel.font = .systemFont(ofSize: 30, weight: .bold)
         tempLabel.textColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
@@ -22,21 +22,21 @@ class ForecastTableViewCell: UITableViewCell {
         return tempLabel
     }()
     
-    let timeLabel: UILabel = {
+    private lazy var timeLabel: UILabel = {
        let time = UILabel()
         time.font = .systemFont(ofSize: 15)
         time.textAlignment = .center
         return time
     }()
     
-    let weatherLabel: UILabel = {
+    private lazy var weatherLabel: UILabel = {
         let state = UILabel()
         state.font = .systemFont(ofSize: 15)
         state.textAlignment = .center
         return state
     }()
     
-    let forecastImage: UIImageView = {
+    private lazy var forecastImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
        return imageView
@@ -51,15 +51,15 @@ class ForecastTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
-        addSubview(temperatureLabel)
-        addSubview(forecastImage)
-        addSubview(timeLabel)
-        addSubview(weatherLabel)
+   private func setupViews() {
+        addSubviews([temperatureLabel,
+                     forecastImage,
+                     timeLabel,
+                     weatherLabel])
         setupConstr()
     }
     
-    func setupConstr() {
+   private func setupConstr() {
         temperatureLabel.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
             make.trailing.equalToSuperview().inset(3)

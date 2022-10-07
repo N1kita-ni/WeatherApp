@@ -11,33 +11,35 @@ import SnapKit
 
 class ForecastViewController: UIViewController {
     
-    let forecastTableView: UITableView = {
+    private lazy var forecastTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: ForecastTableViewCell.reuseIdentifier)
+        //tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: ForecastTableViewCell.reuseIdentifier)
+        tableView.register(ForecastTableViewCell.self)
         tableView.allowsSelection = false 
         return tableView
     }()
     
-    let gradientStackView: UIStackView = {
+    private lazy var gradientStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         return stackView
     }()
     
-    let forecastSpinner: UIActivityIndicatorView = {
+    private lazy var forecastSpinner: UIActivityIndicatorView = {
         let spiner = UIActivityIndicatorView()
         spiner.color = .black
         spiner.style = .large
         return spiner
     }()
     
-    var colors: [UIColor] = [#colorLiteral(red: 0.9098039269, green: 0.5254884555, blue: 0.5817584947, alpha: 1), #colorLiteral(red: 1, green: 0.9975345455, blue: 0.6872003919, alpha: 1), #colorLiteral(red: 0.5961294384, green: 0.7331562011, blue: 1, alpha: 1), #colorLiteral(red: 0.6930560762, green: 1, blue: 0.6908935261, alpha: 1), #colorLiteral(red: 0.9824787424, green: 0.7485847892, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.8281603211, blue: 0.7240381341, alpha: 1)]
     
-    var presenter: ForecastViewPresenterProtocol!
+   private let colors: [UIColor] = [#colorLiteral(red: 0.9098039269, green: 0.5254884555, blue: 0.5817584947, alpha: 1), #colorLiteral(red: 1, green: 0.9975345455, blue: 0.6872003919, alpha: 1), #colorLiteral(red: 0.5961294384, green: 0.7331562011, blue: 1, alpha: 1), #colorLiteral(red: 0.6930560762, green: 1, blue: 0.6908935261, alpha: 1), #colorLiteral(red: 0.9824787424, green: 0.7485847892, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.8281603211, blue: 0.7240381341, alpha: 1)]
+    
+     var presenter: ForecastViewPresenterProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         forecastTableView.dataSource = self
         forecastTableView.delegate = self
         forecastSpinner.startAnimating()
@@ -62,12 +64,11 @@ class ForecastViewController: UIViewController {
        }
     
     private func setupViews() {
-        view.addSubview(forecastTableView)
-        view.addSubview(gradientStackView)
+        view.addSubviews([forecastTableView, gradientStackView])
         forecastTableView.addSubview(forecastSpinner)
-        for color in colors {
+        colors.forEach {
             let view = UIView()
-            view.backgroundColor = color
+            view.backgroundColor = $0
             view.alpha = 0.8
             gradientStackView.addArrangedSubview(view)
         }
@@ -115,7 +116,8 @@ extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.reuseIdentifier, for: indexPath) as? ForecastTableViewCell else { return UITableViewCell() }
+       // guard let cell = tableView.dequeueReusableCell(withIdentifier: ForecastTableViewCell.reuseIdentifier, for: indexPath) as? ForecastTableViewCell else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(ForecastTableViewCell.self, for: indexPath)
         
         cell.configure(forecast: presenter.forecastSections[indexPath.section].data[indexPath.row])
         

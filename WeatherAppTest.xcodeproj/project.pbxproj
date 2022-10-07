@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CF6625C180A927E8B2CCE595 /* Pods_WeatherAppTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2CD23D8296A89563C6902B /* Pods_WeatherAppTest.framework */; };
+		F04A6B7A28EF9908002E7B0A /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04A6B7928EF9908002E7B0A /* View+Extension.swift */; };
+		F04A6B7D28EFA013002E7B0A /* UITableView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04A6B7C28EFA012002E7B0A /* UITableView+Helper.swift */; };
 		F052D720278CA85900D2AF78 /* GenericGetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F052D71F278CA85900D2AF78 /* GenericGetData.swift */; };
 		F06DDFCE271F2BA500A510D1 /* ForecastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DDFCC271F2BA500A510D1 /* ForecastViewController.swift */; };
 		F06DDFCF271F2BA500A510D1 /* ForecastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F06DDFCD271F2BA500A510D1 /* ForecastViewController.xib */; };
@@ -20,6 +22,7 @@
 		F06DDFE42722C66400A510D1 /* NetworkConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DDFE32722C66400A510D1 /* NetworkConnect.swift */; };
 		F06DDFE62726E0F900A510D1 /* ForecastWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DDFE52726E0F800A510D1 /* ForecastWeather.swift */; };
 		F06DDFEB272AB1F300A510D1 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DDFEA272AB1F300A510D1 /* Date+Extension.swift */; };
+		F0AE016C28EFAD500086A1E7 /* UIView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AE016B28EFAD500086A1E7 /* UIView+Helper.swift */; };
 		F0B10FED271F1EEB00C0DF31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B10FEC271F1EEB00C0DF31 /* AppDelegate.swift */; };
 		F0B10FEF271F1EEB00C0DF31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B10FEE271F1EEB00C0DF31 /* SceneDelegate.swift */; };
 		F0B10FF1271F1EEB00C0DF31 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B10FF0271F1EEB00C0DF31 /* WeatherViewController.swift */; };
@@ -37,6 +40,8 @@
 		0A1E995AA9469BFB7B23C088 /* Pods-WeatherAppTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppTest.debug.xcconfig"; path = "Target Support Files/Pods-WeatherAppTest/Pods-WeatherAppTest.debug.xcconfig"; sourceTree = "<group>"; };
 		C4E61A3F7D8B04B12DA2429C /* Pods-WeatherAppTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherAppTest.release.xcconfig"; path = "Target Support Files/Pods-WeatherAppTest/Pods-WeatherAppTest.release.xcconfig"; sourceTree = "<group>"; };
 		EA2CD23D8296A89563C6902B /* Pods_WeatherAppTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherAppTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F04A6B7928EF9908002E7B0A /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		F04A6B7C28EFA012002E7B0A /* UITableView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Helper.swift"; sourceTree = "<group>"; };
 		F052D71F278CA85900D2AF78 /* GenericGetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericGetData.swift; sourceTree = "<group>"; };
 		F06DDFCC271F2BA500A510D1 /* ForecastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewController.swift; sourceTree = "<group>"; };
 		F06DDFCD271F2BA500A510D1 /* ForecastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastViewController.xib; sourceTree = "<group>"; };
@@ -49,6 +54,7 @@
 		F06DDFE32722C66400A510D1 /* NetworkConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnect.swift; sourceTree = "<group>"; };
 		F06DDFE52726E0F800A510D1 /* ForecastWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeather.swift; sourceTree = "<group>"; };
 		F06DDFEA272AB1F300A510D1 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		F0AE016B28EFAD500086A1E7 /* UIView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helper.swift"; sourceTree = "<group>"; };
 		F0B10FE9271F1EEB00C0DF31 /* WeatherAppTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAppTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B10FEC271F1EEB00C0DF31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0B10FEE271F1EEB00C0DF31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +163,9 @@
 			isa = PBXGroup;
 			children = (
 				F06DDFEA272AB1F300A510D1 /* Date+Extension.swift */,
+				F04A6B7928EF9908002E7B0A /* View+Extension.swift */,
+				F04A6B7C28EFA012002E7B0A /* UITableView+Helper.swift */,
+				F0AE016B28EFAD500086A1E7 /* UIView+Helper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,6 +384,7 @@
 				F06DDFE62726E0F900A510D1 /* ForecastWeather.swift in Sources */,
 				F0B1100A271F200100C0DF31 /* CurrentWeather.swift in Sources */,
 				F052D720278CA85900D2AF78 /* GenericGetData.swift in Sources */,
+				F04A6B7D28EFA013002E7B0A /* UITableView+Helper.swift in Sources */,
 				F06DDFD927207A7600A510D1 /* MainTabBarController.swift in Sources */,
 				F06DDFE02721EC6C00A510D1 /* ForecastTableViewCell.swift in Sources */,
 				F06DDFDD2721B69D00A510D1 /* ForecastWeatherNetworkService.swift in Sources */,
@@ -385,9 +395,11 @@
 				F0B7A97E27427B6600636D3C /* MainView.swift in Sources */,
 				F0B10FF1271F1EEB00C0DF31 /* WeatherViewController.swift in Sources */,
 				F06DDFD4271F50B400A510D1 /* ModuleBuilder.swift in Sources */,
+				F0AE016C28EFAD500086A1E7 /* UIView+Helper.swift in Sources */,
 				F0B10FED271F1EEB00C0DF31 /* AppDelegate.swift in Sources */,
 				F06DDFD727204E5A00A510D1 /* ForecastPresenter.swift in Sources */,
 				F0B11008271F1FAC00C0DF31 /* CurrentWeatherNetworkService.swift in Sources */,
+				F04A6B7A28EF9908002E7B0A /* View+Extension.swift in Sources */,
 				F0B10FEF271F1EEB00C0DF31 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,12 +546,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FMF9HNS62C;
 				INFOPLIST_FILE = WeatherAppTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "test-2.WeatherAppTest";
+				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "--generate-entitlement-der";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nicheporuk.WeatherAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -552,12 +567,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FMF9HNS62C;
 				INFOPLIST_FILE = WeatherAppTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "test-2.WeatherAppTest";
+				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "--generate-entitlement-der";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nicheporuk.WeatherAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
