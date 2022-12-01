@@ -13,7 +13,6 @@ extension UITableView {
         let reuseIdentifier = String(describing: cellClass)
         register(cellClass, forCellReuseIdentifier: reuseIdentifier)
     }
-
     func dequeueReusableCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
         let reuseIdentifier = String(describing: cellClass)
         return dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! T
